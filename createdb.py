@@ -49,4 +49,4 @@ if __name__ == '__main__':
   base.sqlite_cmd(sql_insert1)
   print(base.sqlite_select(sql_select1))
   base.sqlite_close()
-  print("Testing")
+  print("Testing1")
