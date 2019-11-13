@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import sqlite3
-from sqlite3 import Error
  
 class SQLITE():
   def __init__(self,db_file):
@@ -9,13 +8,13 @@ class SQLITE():
     try:
       self.conn = sqlite3.connect(db_file)
       self.c = self.conn.cursor()
-    except Error as e:
+    except sqlite3.Error as e:
       print(e)
 
   def sqlite_cmd(self,sqlite_cmd):
     try: 
       self.c.execute(sqlite_cmd)
-    except Error as e:
+    except sqlite3.Error as e:
       print(e)
 
   def sqlite_select(self,sqlite_cmd):
@@ -23,14 +22,14 @@ class SQLITE():
       self.c.execute(sqlite_cmd)
       output = [row for row in self.c]
       return(output)
-    except Error as e:
+    except sqlite3.Error as e:
       print(e)
     
   def sqlite_close(self):
     try:
       self.conn.commit()
       self.conn.close()
-    except Error as e:
+    except sqlite3.Error as e:
       print(e)
 
  
@@ -50,3 +49,4 @@ if __name__ == '__main__':
   base.sqlite_cmd(sql_insert1)
   print(base.sqlite_select(sql_select1))
   base.sqlite_close()
+  print("Testing")
